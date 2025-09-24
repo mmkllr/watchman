@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx4c44bkgw8np"]
+[gd_scene load_steps=11 format=3 uid="uid://cx4c44bkgw8np"]
 
 [ext_resource type="PackedScene" uid="uid://dq55gky3n4evd" path="res://resources/model/watchman.glb" id="1_mg1go"]
 [ext_resource type="Script" uid="uid://bff8hixuewrqx" path="res://scenes/watchman.gd" id="2_jrd12"]
 [ext_resource type="Shader" uid="uid://yahic0jylxvq" path="res://resources/shader/watchman.gdshader" id="2_mg1go"]
 [ext_resource type="Shader" uid="uid://tykulkcvlwip" path="res://resources/shader/crt.gdshader" id="3_vysgr"]
+[ext_resource type="Script" uid="uid://dcwquhsmqfhir" path="res://scenes/camera_3d.gd" id="5_c47tm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jrd12"]
 viewport_path = NodePath("SubViewport")
@@ -28,19 +29,23 @@ shader_parameter/resolution = Vector2(640, 480)
 shader_parameter/pixelate = true
 shader_parameter/roll = true
 shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 2.3560001119100002
+shader_parameter/roll_size = 2.35600011191
 shader_parameter/roll_variation = 1.3390000603426202
 shader_parameter/distort_intensity = 0.0910000043225
 shader_parameter/noise_opacity = 0.7750000368125
 shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.126000005985
-shader_parameter/aberration = -0.19999996200000003
+shader_parameter/static_noise_intensity = 0.4370000207575
+shader_parameter/aberration = -0.006999952832499989
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.8710000413725
+
+[sub_resource type="Environment" id="Environment_jrd12"]
+adjustment_enabled = true
+adjustment_saturation = 0.01
 
 [node name="watchman" instance=ExtResource("1_mg1go")]
 transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
@@ -83,8 +88,16 @@ grow_vertical = 2
 
 [node name="head2" type="Node3D" parent="." index="4"]
 
-[node name="SubViewport2" type="SubViewport" parent="head2" index="0"]
+[node name="SpringArm3D" type="SpringArm3D" parent="head2" index="0"]
+spring_length = 0.035
+
+[node name="anchor" type="Node3D" parent="head2/SpringArm3D" index="0"]
+transform = Transform3D(31.249998, 0, 0, 0, 31.249998, 0, 0, 0, 31.249998, -32.29813, 3.9612145, -9.242858)
+
+[node name="SubViewport2" type="SubViewport" parent="head2" index="1"]
 
 [node name="Camera3D" type="Camera3D" parent="head2/SubViewport2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.046597, 0.23345292, -0.15146685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0335402, 0.12675887, -0.29577148)
+environment = SubResource("Environment_jrd12")
 current = true
+script = ExtResource("5_c47tm")
