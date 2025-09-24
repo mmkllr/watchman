@@ -22,19 +22,19 @@ viewport_path = NodePath("head2/SubViewport2")
 resource_local_to_scene = true
 shader = ExtResource("3_vysgr")
 shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.02000000095
-shader_parameter/scanlines_width = 0.25
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
 shader_parameter/grille_opacity = 0.0
 shader_parameter/resolution = Vector2(640, 480)
 shader_parameter/pixelate = true
-shader_parameter/roll = true
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 2.35600011191
-shader_parameter/roll_variation = 1.3390000603426202
+shader_parameter/roll = false
+shader_parameter/roll_speed = 600.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.05700004694762
 shader_parameter/distort_intensity = 0.0910000043225
 shader_parameter/noise_opacity = 0.7750000368125
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.4370000207575
+shader_parameter/noise_speed = 1.0
+shader_parameter/static_noise_intensity = 0.1950000092625
 shader_parameter/aberration = -0.006999952832499989
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
@@ -45,6 +45,8 @@ shader_parameter/vignette_opacity = 0.8710000413725
 
 [sub_resource type="Environment" id="Environment_jrd12"]
 adjustment_enabled = true
+adjustment_brightness = 3.24
+adjustment_contrast = 2.8
 adjustment_saturation = 0.01
 
 [node name="watchman" instance=ExtResource("1_mg1go")]
@@ -97,7 +99,7 @@ transform = Transform3D(31.249998, 0, 0, 0, 31.249998, 0, 0, 0, 31.249998, -32.2
 [node name="SubViewport2" type="SubViewport" parent="head2" index="1"]
 
 [node name="Camera3D" type="Camera3D" parent="head2/SubViewport2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0335402, 0.12675887, -0.29577148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0335402, 0.32326323, -0.29577148)
 environment = SubResource("Environment_jrd12")
 current = true
 script = ExtResource("5_c47tm")

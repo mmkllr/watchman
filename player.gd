@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var tools: Node3D = $Head/Camera3D/Tools
 
 const SPEED := 1.0
 const SENSITIVITY := 0.0025
