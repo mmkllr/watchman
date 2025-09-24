@@ -23,10 +23,11 @@ spot_angle = 70.31
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(-1.3027009e-15, 1, 4.371139e-08, -2.9802322e-08, -4.371139e-08, 1, 1, 0, 2.9802322e-08, -29.43464, 10.477378, -3.8875928)
-visible = false
-light_color = Color(0.6938515, 0.7338731, 0.99500257, 1)
+light_color = Color(4.1503997, 4.1503997, 4.1503997, 1)
 light_energy = 16.0
 light_indirect_energy = 11.556
+light_volumetric_fog_energy = 0.0
+light_size = 0.227
 spot_range = 86.886154
 spot_angle = 89.99
 

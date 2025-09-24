@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx4c44bkgw8np"]
+
+[ext_resource type="PackedScene" uid="uid://dq55gky3n4evd" path="res://resources/model/watchman.glb" id="1_mg1go"]
+[ext_resource type="Script" uid="uid://bff8hixuewrqx" path="res://scenes/watchman.gd" id="2_jrd12"]
+[ext_resource type="Shader" uid="uid://yahic0jylxvq" path="res://resources/shader/watchman.gdshader" id="2_mg1go"]
+[ext_resource type="Shader" uid="uid://tykulkcvlwip" path="res://resources/shader/crt.gdshader" id="3_vysgr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jrd12"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrd12"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_mg1go")
+shader_parameter/screen_texture = SubResource("ViewportTexture_jrd12")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vysgr"]
+viewport_path = NodePath("head2/SubViewport2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53obj"]
+resource_local_to_scene = true
+shader = ExtResource("3_vysgr")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.02000000095
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 2.3560001119100002
+shader_parameter/roll_variation = 1.3390000603426202
+shader_parameter/distort_intensity = 0.0910000043225
+shader_parameter/noise_opacity = 0.7750000368125
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.126000005985
+shader_parameter/aberration = -0.19999996200000003
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.8710000413725
+
+[node name="watchman" instance=ExtResource("1_mg1go")]
+transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
+script = ExtResource("2_jrd12")
+
+[node name="watchnan screen" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_jrd12")
+
+[node name="screen class" parent="." index="2"]
+visible = false
+
+[node name="SubViewport" type="SubViewport" parent="." index="3"]
+size = Vector2i(324, 234)
+
+[node name="WatchmanScreen" type="Control" parent="SubViewport" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/WatchmanScreen" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_vysgr")
+
+[node name="CRTEffect" type="ColorRect" parent="SubViewport/WatchmanScreen" index="1"]
+material = SubResource("ShaderMaterial_53obj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="head2" type="Node3D" parent="." index="4"]
+
+[node name="SubViewport2" type="SubViewport" parent="head2" index="0"]
+
+[node name="Camera3D" type="Camera3D" parent="head2/SubViewport2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.046597, 0.23345292, -0.15146685)
+current = true
