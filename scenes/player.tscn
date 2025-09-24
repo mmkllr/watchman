@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50046444, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56615686, 0)
 environment = SubResource("Environment_tuyoq")
-fov = 56.0
+fov = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D"]
 

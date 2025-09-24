@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx4c44bkgw8np"]
+[gd_scene load_steps=12 format=3 uid="uid://cx4c44bkgw8np"]
 
 [ext_resource type="PackedScene" uid="uid://dq55gky3n4evd" path="res://resources/model/watchman.glb" id="1_mg1go"]
 [ext_resource type="Script" uid="uid://bff8hixuewrqx" path="res://scenes/watchman.gd" id="2_jrd12"]
@@ -35,13 +35,15 @@ shader_parameter/distort_intensity = 0.0910000043225
 shader_parameter/noise_opacity = 0.7750000368125
 shader_parameter/noise_speed = 1.0
 shader_parameter/static_noise_intensity = 0.1950000092625
-shader_parameter/aberration = -0.006999952832499989
+shader_parameter/aberration = -0.00699995283249998
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.8710000413725
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_c47tm"]
 
 [sub_resource type="Environment" id="Environment_jrd12"]
 adjustment_enabled = true
@@ -53,8 +55,15 @@ adjustment_saturation = 0.01
 transform = Transform3D(0.032, 0, 0, 0, 0.032, 0, 0, 0, 0.032, 0, 0, 0)
 script = ExtResource("2_jrd12")
 
+[node name="watchman2" parent="." index="0"]
+layers = 2
+
 [node name="watchnan screen" parent="." index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_jrd12")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="watchnan screen" index="0"]
+transform = Transform3D(7.5811887, 0, 0, 0, 3.6368237, 0, 0, 0, 17.36111, 0, 0, 1.1042733)
+light_cull_mask = 4294966274
 
 [node name="screen class" parent="." index="2"]
 visible = false
@@ -91,7 +100,8 @@ grow_vertical = 2
 [node name="head2" type="Node3D" parent="." index="4"]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="head2" index="0"]
-spring_length = 0.035
+shape = SubResource("SeparationRayShape3D_c47tm")
+spring_length = 0.04
 
 [node name="anchor" type="Node3D" parent="head2/SpringArm3D" index="0"]
 transform = Transform3D(31.249998, 0, 0, 0, 31.249998, 0, 0, 0, 31.249998, -32.29813, 3.9612145, -9.242858)
