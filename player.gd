@@ -42,7 +42,8 @@ func _physics_process(delta: float) -> void:
 		
 	# Head bob
 	t_bob += delta * velocity.length()
-	camera.transform.origin = _headbob(t_bob)
+	camera.transform.origin = _headbob(t_bob, 0.03)
+	tools.transform.origin = _headbob(t_bob, 0.002) - Vector3(0.0, 0.357, 0.0)
 
 	move_and_slide()
 
@@ -50,10 +51,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_in"):
 		_zoom_in()
 
-func _headbob(time):
+func _headbob(time, amp):
 	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	pos.y = sin(time * BOB_FREQ) * amp
+	pos.x = cos(time * BOB_FREQ / 2) * amp
 	return pos
 
 func _zoom_in():
