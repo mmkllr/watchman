@@ -3,6 +3,11 @@ extends CharacterBody3D
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var tools: Node3D = $Head/Camera3D/Tools
+@onready var watchman: Node3D = $Head/Camera3D/Tools/watchman
+
+var watchman_tween_in
+var watchman_tween_out
+var zoomed_in := false
 
 const SPEED := 1.0
 const SENSITIVITY := 0.0025
@@ -41,8 +46,23 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("zoom_in"):
+		_zoom_in()
+
 func _headbob(time):
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func _zoom_in():
+	if !zoomed_in:
+		watchman_tween_in = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUINT)
+		watchman_tween_in.tween_property(watchman, "position", Vector3(0.056, 0.325, -0.175), 0.8)
+		zoomed_in = true
+	else:
+		watchman_tween_out = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		watchman_tween_out.tween_property(watchman, "position", Vector3(0.267, 0.216, -0.536), 0.8)
+		zoomed_in = false
+	

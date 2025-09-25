@@ -62,7 +62,8 @@ layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_jrd12")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="watchnan screen" index="0"]
-transform = Transform3D(7.5811887, 0, 0, 0, 3.6368237, 0, 0, 0, 17.36111, 0, 0, 1.1042733)
+transform = Transform3D(7.5811887, 0, 0, 0, 3.6368237, 0, 0, 0, 17.36111, 0, 0, 0.39228907)
+light_energy = 0.2
 light_cull_mask = 4294966274
 
 [node name="screen class" parent="." index="2"]
